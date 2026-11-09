@@ -22,6 +22,7 @@ server/uploads/*
 desktop/vendor/
 desktop/release/
 desktop/scripts/git-push.js
+desktop/scripts/add-to-deploy-manager.js
 desktop/node_modules/
 server/dist/
 client/dist/
