@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <title>Ezzat Optics</title>
+  <style>
+    html, body {
+      margin: 0; height: 100%; overflow: hidden; user-select: none;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 55%, #0f766e 100%);
+      color: #fff; display: flex; align-items: center; justify-content: center;
+    }
+    .box { text-align: center; }
+    img { width: 120px; height: 120px; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    h1 { font-size: 22px; margin: 18px 0 6px; font-weight: 600; }
+    #status { font-size: 13px; opacity: .85; min-height: 18px; }
+    .bar { width: 220px; height: 4px; margin: 16px auto 0; background: rgba(255,255,255,.2); border-radius: 4px; overflow: hidden; }
+    .bar::after { content: ""; display: block; width: 40%; height: 100%; background: #fff; border-radius: 4px; animation: slide 1.2s ease-in-out infinite; }
+    @keyframes slide { 0% { transform: translateX(-120%); } 100% { transform: translateX(320%); } }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <img src="assets/icon.png" alt="" onerror="this.style.display='none'" />
+    <h1>Ezzat Optics</h1>
+    <p style="font-size:12px; margin: 0 0 10px; opacity: 0.85;">عزت للبصريات - النظام الذكي</p>
+    <div id="status">جاري التحميل...</div>
+    <div class="bar"></div>
+  </div>
+  <script>
+    window.setStatus = (t) => { document.getElementById("status").textContent = t; };
+  </script>
+</body>
+</html>

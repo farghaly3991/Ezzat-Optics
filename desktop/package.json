@@ -1,0 +1,72 @@
+{
+  "name": "ezzat-optics",
+  "productName": "Ezzat Optics",
+  "version": "1.0.0",
+  "description": "Offline-first desktop edition of Ezzat Optics (Electron + embedded MongoDB)",
+  "main": "main.js",
+  "author": "Ezzat Optics",
+  "license": "UNLICENSED",
+  "scripts": {
+    "fetch-mongo": "node scripts/fetch-mongo.js",
+    "build-client": "npm --prefix ../client run build",
+    "start": "electron .",
+    "pack:patch": "npm run build-client && node scripts/create-patch.js",
+    "dist": "npm run build-client && electron-builder --win nsis",
+    "dist:portable": "npm run build-client && electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.ezzatoptics.desktop",
+    "productName": "Ezzat Optics",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "splash.html",
+      "assets/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "../server",
+        "to": "server",
+        "filter": [
+          "**/*",
+          "!tests/**",
+          "!scratch/**",
+          "!scripts/**",
+          "!uploads/**",
+          "!.env",
+          "!env.json",
+          "!*.tar.gz",
+          "!node_modules/nodemon/**"
+        ]
+      },
+      {
+        "from": "vendor/mongodb",
+        "to": "mongodb",
+        "filter": ["mongod.exe", "*.dll"]
+      }
+    ],
+    "win": {
+      "target": ["nsis"],
+      "icon": "assets/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Ezzat Optics",
+      "artifactName": "Ezzat Optics Setup ${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Ezzat Optics Portable ${version}.exe"
+    }
+  }
+}

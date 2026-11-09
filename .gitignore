@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment variables (contain API keys and DB secrets)
+.env
+.env.*
+server/.env
+client/.env
+
+# Temporary logs & test artifacts
+*.log
+*.tar.gz
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Uploads & local media files
+server/uploads/*
+!server/uploads/.gitkeep
+
+desktop/vendor/
+desktop/release/
+desktop/scripts/git-push.js
+desktop/node_modules/
+server/dist/
+client/dist/
+.DS_Store
+Thumbs.db
